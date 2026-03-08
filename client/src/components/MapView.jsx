@@ -44,12 +44,17 @@ function MapView() {
     async function voteIssue(issue) {
         if (votedIssues.has(issue.id)) return;
 
+        // Optimistic UI update
+        setIssues(issues.map(i =>
+            i.id === issue.id ? { ...i, votes: i.votes + 1 } : i
+        ));
+        setVotedIssues(new Set([...votedIssues, issue.id]));
+
         await supabase
             .from("issues")
             .update({ votes: issue.votes + 1 })
             .eq("id", issue.id);
 
-        setVotedIssues(new Set([...votedIssues, issue.id]));
         fetchIssues();
     }
 
