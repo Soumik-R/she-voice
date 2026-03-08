@@ -36,20 +36,7 @@ function LandingPage() {
                         </a>
                     </div>
 
-                    <div className="hero-stats">
-                        <div className="hero-stat">
-                            <div className="hero-stat-number">1,200+</div>
-                            <div className="hero-stat-label">Issues Reported</div>
-                        </div>
-                        <div className="hero-stat">
-                            <div className="hero-stat-number">85%</div>
-                            <div className="hero-stat-label">Resolved Rate</div>
-                        </div>
-                        <div className="hero-stat">
-                            <div className="hero-stat-number">42</div>
-                            <div className="hero-stat-label">Cities Covered</div>
-                        </div>
-                    </div>
+
                 </div>
             </section>
 
@@ -66,7 +53,7 @@ function LandingPage() {
 
                 <div className="features-grid">
                     <div className="feature-card">
-                        <div className="feature-icon feature-icon-rose">📸</div>
+                        <div className="feature-icon feature-icon-rose"></div>
                         <h3>Photo Evidence Upload</h3>
                         <p>
                             Capture and upload photos of issues you encounter — from broken
@@ -75,7 +62,7 @@ function LandingPage() {
                     </div>
 
                     <div className="feature-card">
-                        <div className="feature-icon feature-icon-purple">📍</div>
+                        <div className="feature-icon feature-icon-purple"></div>
                         <h3>Location Tagging</h3>
                         <p>
                             Pin exact locations on an interactive map so authorities know
@@ -84,7 +71,7 @@ function LandingPage() {
                     </div>
 
                     <div className="feature-card">
-                        <div className="feature-icon feature-icon-gold">🗳️</div>
+                        <div className="feature-icon feature-icon-gold"></div>
                         <h3>Community Voting</h3>
                         <p>
                             Upvote issues that affect you too. Higher votes mean higher
@@ -93,7 +80,7 @@ function LandingPage() {
                     </div>
 
                     <div className="feature-card">
-                        <div className="feature-icon feature-icon-teal">🏛️</div>
+                        <div className="feature-icon feature-icon-teal"></div>
                         <h3>Smart Authority Routing</h3>
                         <p>
                             Reports are automatically sent to the right authority —
@@ -102,7 +89,7 @@ function LandingPage() {
                     </div>
 
                     <div className="feature-card">
-                        <div className="feature-icon feature-icon-rose">📊</div>
+                        <div className="feature-icon feature-icon-rose"></div>
                         <h3>Problem Hotspot Dashboard</h3>
                         <p>
                             Visual heatmap showing the most reported problem areas in your
@@ -111,7 +98,7 @@ function LandingPage() {
                     </div>
 
                     <div className="feature-card">
-                        <div className="feature-icon feature-icon-purple">🔔</div>
+                        <div className="feature-icon feature-icon-purple"></div>
                         <h3>Status Tracking</h3>
                         <p>
                             Track the status of your report from submission to resolution.
@@ -135,7 +122,7 @@ function LandingPage() {
                     <div className="step-item">
                         <div className="step-number">1</div>
                         <div className="step-content">
-                            <h3>📝 Report the Problem</h3>
+                            <h3>Report the Problem</h3>
                             <p>
                                 Describe the issue you face. Upload a photo, select the
                                 category (Public Safety, Workplace, Healthcare), and tag the
@@ -147,7 +134,7 @@ function LandingPage() {
                     <div className="step-item">
                         <div className="step-number">2</div>
                         <div className="step-content">
-                            <h3>🚀 Smart Routing Takes Over</h3>
+                            <h3>Smart Routing Takes Over</h3>
                             <p>
                                 Our system automatically identifies the right authority based on
                                 the issue type and routes your report — Government, Company
@@ -159,7 +146,7 @@ function LandingPage() {
                     <div className="step-item">
                         <div className="step-number">3</div>
                         <div className="step-content">
-                            <h3>✅ Track & Resolve</h3>
+                            <h3>Track & Resolve</h3>
                             <p>
                                 The community votes on issues, priorities are set, and
                                 authorities take action. You get real-time status updates
@@ -183,7 +170,7 @@ function LandingPage() {
 
                 <div className="categories-grid">
                     <div className="category-card">
-                        <div className="category-emoji">🚏</div>
+                        <div className="category-emoji"></div>
                         <div className="category-info">
                             <h4>Unsafe Bus Stops</h4>
                             <p>→ Municipal Authority</p>
@@ -191,7 +178,7 @@ function LandingPage() {
                     </div>
 
                     <div className="category-card">
-                        <div className="category-emoji">💡</div>
+                        <div className="category-emoji"></div>
                         <div className="category-info">
                             <h4>Poor Street Lighting</h4>
                             <p>→ Municipal Corporation</p>
@@ -199,7 +186,7 @@ function LandingPage() {
                     </div>
 
                     <div className="category-card">
-                        <div className="category-emoji">💺</div>
+                        <div className="category-emoji"></div>
                         <div className="category-info">
                             <h4>Uncomfortable Office Design</h4>
                             <p>→ Office Management</p>
@@ -207,7 +194,7 @@ function LandingPage() {
                     </div>
 
                     <div className="category-card">
-                        <div className="category-emoji">⚠️</div>
+                        <div className="category-emoji"></div>
                         <div className="category-info">
                             <h4>Workplace Harassment</h4>
                             <p>→ HR Department</p>
@@ -215,7 +202,7 @@ function LandingPage() {
                     </div>
 
                     <div className="category-card">
-                        <div className="category-emoji">🏥</div>
+                        <div className="category-emoji"></div>
                         <div className="category-info">
                             <h4>Medical Symptoms Ignored</h4>
                             <p>→ Healthcare Authority</p>
@@ -223,7 +210,7 @@ function LandingPage() {
                     </div>
 
                     <div className="category-card">
-                        <div className="category-emoji">🚶‍♀️</div>
+                        <div className="category-emoji"></div>
                         <div className="category-info">
                             <h4>Unsafe Walking Routes</h4>
                             <p>→ Government Portal</p>
@@ -255,14 +242,9 @@ function LandingPage() {
                     <div className="footer-text">
                         Made with <span>♥</span> for Women's Day 2026 — SheVoice
                     </div>
-                    <ul className="footer-links">
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#how-it-works">How It Works</a></li>
-                        <li><a href="#categories">Categories</a></li>
-                    </ul>
                 </div>
-            </footer>
-        </div>
+            </footer >
+        </div >
     );
 }
 
