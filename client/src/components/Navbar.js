@@ -12,6 +12,7 @@ function Navbar() {
                 <li><a href="#how-it-works">How It Works</a></li>
                 <li><a href="#categories">Categories</a></li>
                 <li><Link to="/map" style={{ color: 'rgba(255,255,255,0.75)', textDecoration: 'none' }}>Map</Link></li>
+                <li><Link to="/register-org" style={{ color: 'rgba(255,255,255,0.75)', textDecoration: 'none' }}>Register Org</Link></li>
                 <li>
                     <Link to="/report" className="btn-nav btn-nav-primary">
                         Report Issue ✦

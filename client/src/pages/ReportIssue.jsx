@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { supabase } from "../services/supabaseClient";
 import { Link } from "react-router-dom";
 
@@ -15,6 +15,20 @@ function ReportIssue() {
     const [locationStatus, setLocationStatus] = useState("");
     const [uploadedImageUrl, setUploadedImageUrl] = useState("");
     const fileInputRef = useRef(null);
+
+    const [organizations, setOrganizations] = useState([]);
+    const [selectedOrg, setSelectedOrg] = useState("");
+
+    // Fetch organizations
+    useEffect(() => {
+        fetchOrganizations();
+    }, []);
+
+    async function fetchOrganizations() {
+        const { data } = await supabase.from("organizations").select("*");
+        setOrganizations(data || []);
+    }
+
 
     const categoryDetails = {
         "Public Safety": {
@@ -98,6 +112,7 @@ function ReportIssue() {
                         authority,
                         votes: 0,
                         image_url: imageUrl,
+                        organization_id: selectedOrg || null,
                     },
                 ]);
 
@@ -320,6 +335,22 @@ function ReportIssue() {
                                 </button>
                             ))}
                         </div>
+                    </div>
+
+                    <div className="form-group mt-4">
+                        <label className="form-label">Linked Organization (Optional)</label>
+                        <select
+                            className="form-input"
+                            value={selectedOrg}
+                            onChange={(e) => setSelectedOrg(e.target.value)}
+                        >
+                            <option value="">No specific organization</option>
+                            {organizations.map((org) => (
+                                <option key={org.id} value={org.id}>
+                                    {org.name} ({org.location})
+                                </option>
+                            ))}
+                        </select>
                     </div>
 
                     {category && (

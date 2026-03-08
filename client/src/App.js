@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import LandingPage from './pages/LandingPage';
 import ReportIssue from './pages/ReportIssue';
 import MapView from './components/MapView';
+import RegisterOrg from './pages/RegisterOrg';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/report" element={<ReportIssue />} />
         <Route path="/map" element={<MapView />} />
+        <Route path="/register-org" element={<RegisterOrg />} />
       </Routes>
     </Router>
   );
