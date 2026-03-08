@@ -1,88 +1,87 @@
-# SheVoice 🟣
+# SheVoice
 *The World Wasn't Built For You. Let's Change That.*
 
-**SheVoice** is a dedicated platform designed to highlight and address the "Invisible Women Problem"—a real global issue where many products, cities, and services are designed for men by default, ignoring women's needs.
+**SheVoice** is a comprehensive civic technology platform designed to address the systemic "Invisible Women Problem"—the pervasive global issue where infrastructure, products, and public services are predominantly designed for men by default, often ignoring or dangerously compromising women's safety and needs.
 
-Through SheVoice, women can report design problems they face in everyday life, map them, and ensure these stories reach the right authorities for real-world change.
-
----
-
-## 🎯 What Does This Project Do?
-
-This platform provides a loud, mapped, and actionable voice to everyday struggles.
-
-Examples of problems you can report:
-*   🚏 **Unsafe bus stops** or poor street lighting.
-*   💺 **Office chairs** that are uncomfortable for women's bodies.
-*   ⚠️ **Workplace harassment** or unsafe facilities.
-*   🏥 **Medical symptoms ignored** or a lack of women doctors.
-
-Instead of these issues going unheard, SheVoice plots them on a global map, crowdsources confirmation through community voting, and smart-routes them to the specific authority responsible (e.g., Municipal Corporation, HR Department, Health Authority).
+SheVoice empowers women to document, map, and amplify the design flaws and safety hazards they encounter in their daily lives. By providing a centralized, data-driven platform, SheVoice ensures that these critical stories are no longer individual grievances but aggregated community data that can be routed directly to the authorities capable of implementing real-world changes.
 
 ---
 
-## ⚙️ Tech Stack
+## What Does This Project Do?
 
-We built this platform using modern, scalable, and fast technologies:
+The fundamental goal of SheVoice is to provide a mapped, actionable voice to everyday struggles that are frequently overlooked by traditional urban planning and corporate design. 
+
+Examples of issues the platform is built to handle:
+*   **Public Safety:** Unsafe transit stops, inadequate street lighting, or poorly designed pedestrian infrastructure.
+*   **Workplace Ergonomics and Safety:** Office furniture designed exclusively for male ergonomics, unsafe facilities, or workplace harassment.
+*   **Healthcare Inequities:** Medical symptoms that are routinely dismissed, lack of accessible women's health clinics, or insufficient female medical staff.
+
+Rather than these issues remaining unheard anecdotes, SheVoice geographically plots them on an interactive global map. The platform leverages crowdsourced community voting to confirm the severity and frequency of these issues, and utilizes smart-routing algorithms to direct the aggregated data to the specific regulatory body or organization responsible — whether that is a Municipal Corporation, a corporate HR Department, or a Regional Health Authority.
+
+---
+
+## Technology Stack
+
+SheVoice is architected using a modern, scalable, and responsive technology stack designed for high performance and secure data handling:
 
 *   **Frontend Ecosystem:**
-    *   **React (JS):** Core component-based UI engineering.
-    *   **React Router DOM:** Fast, client-side routing between the Map, Registration, and Reporting modules.
-    *   **Vanilla CSS:** Custom, premium, dark-themed UI with glassmorphism, dynamic gradients, and smooth micro-animations.
+    *   **React:** The core library used for building a modular, component-based user interface.
+    *   **React Router DOM:** Enables seamless, client-side routing across the platform's various modules, including the Map Dashboard, Issue Reporting Portal, and Organization Registration.
+    *   **Vanilla CSS:** Employs a custom, premium dark-themed design system featuring glassmorphism, dynamic gradients, and fluid micro-animations to ensure an engaging user experience without heavy UI framework dependencies.
 
-*   **Mapping & Geolocation:**
-    *   **React-Leaflet (OpenStreetMap):** Interactive map rendering.
-    *   **CARTO basemaps:** Clean, sleek dark-mode tiles.
-    *   **Browser Geolocation API:** To instantly center maps on the reporting user.
+*   **Mapping and Geolocation Services:**
+    *   **React-Leaflet:** Integrates OpenStreetMap data to render interactive, high-performance maps.
+    *   **CARTO Basemaps:** Utilized for clean, high-contrast dark-mode map tiles that align with the platform's aesthetic.
+    *   **Browser Geolocation API:** Automatically captures accurate incident coordinates and centers the map dynamically based on the user's location.
 
-*   **Backend & Database:**
-    *   **Supabase (PostgreSQL):** Serverless, scalable relational database.
-    *   **Supabase Storage:** Secure, public cloud storage for photo evidence uploads.
-    *   **Supabase Auth / Row-Level Security (RLS):** To ensure secure read/write policies on public reporting and voting.
-
----
-
-## 🚀 The Core Workflow
-
-Here is exactly how SheVoice creates change from start to finish:
-
-### 1. The Report (Photo Evidence & Details)
-A user encounters an issue (e.g., Unsafe street lighting). They navigate to the **Report Issue** portal. They fill out what went wrong, upload a photo as evidence, and the system automatically grabs their exact GPS coordinates.
-
-### 2. Smart Authority Routing 🚦
-Depending on the category the user selects, the system automatically tags the report for a specific type of authority:
-*   *Public Safety* ➔ **Municipal Corporation**
-*   *Workplace* ➔ **Office Management / HR**
-*   *Healthcare* ➔ **Health Authority**
-
-If an organization (e.g., a specific hospital or tech company) has partnered with SheVoice, users can also directly link their problem to that registered organization.
-
-### 3. Problem Hotspots Map
-The reported issue instantly goes live on the **Map View**. Decision-makers can visualize the data density in certain geographic zones, seeing exactly what types of problems are clustering where.
-
-### 4. Community Upvoting
-Other women who have experienced the exact same issue can find the pin on the map and click **"Confirm Issue"**. This increments a live vote counter. Higher votes signal to authorities that the problem is widespread and needs urgent priority.
+*   **Backend Infrastructure and Database:**
+    *   **Supabase (PostgreSQL):** Provides a robust, serverless relational database architecture capable of scaling with community growth.
+    *   **Supabase Storage:** Manages the secure, public cloud storage required for users to upload photographic evidence of reported issues.
+    *   **Supabase Row-Level Security (RLS):** Implements strict, database-level security policies to manage authorized read and write access for anonymous reporting, community voting, and organization data.
 
 ---
 
-## 🛠️ Run Locally
+## The Core System Workflow
 
-Want to contribute? Run the project on your machine:
+SheVoice operationalizes civic engagement through a streamlined four-step workflow:
 
-1. Clone the repository.
+### 1. Incident Reporting and Evidence Collection
+When a user encounters a design flaw or safety hazard, they access the Report Issue portal. They provide a detailed description of the problem, upload photographic evidence, and the system automatically captures their exact GPS coordinates to ensure geographical accuracy.
+
+### 2. Intelligent Authority Routing
+Upon submission, the platform's routing system categorizes the report and automatically tags it for the appropriate jurisdiction:
+*   Issues categorized under *Public Safety* are routed to local **Municipal Corporations** or City Councils.
+*   Issues related to the *Workplace* are directed to the relevant **Office Management or Human Resources** departments.
+*   Issues classified under *Healthcare* are escalated to regional **Health Authorities** or hospital administrations.
+
+Furthermore, partnered organizations can register on the platform, allowing users to link their reports directly to specific corporate entities or institutions.
+
+### 3. Geographic Problem Dashboard
+Immediately after submission, the reported issue is plotted live on the interactive Map View. This geographic dashboard allows both users and decision-makers to visualize data density, identifying specific geographic zones where systemic problems are clustering.
+
+### 4. Community Validation (Upvoting)
+To prevent the dilution of critical issues, the platform features a community validation mechanism. Other users who have experienced or witnessed the same problem at a plotted location can use the "Confirm Issue" functionality. This increments a live priority counter. High-vote clusters act as a data-backed signal to authorities, proving that a specific issue is widespread and requires urgent intervention.
+
+---
+
+## Local Development Setup
+
+To contribute to the SheVoice platform or run it locally for testing:
+
+1. Clone the repository to your local machine.
 2. Navigate into the client directory:
    ```bash
    cd client
    ```
-3. Install dependencies:
+3. Install the required Node.js dependencies:
    ```bash
    npm install
    ```
-4. Run the development server:
+4. Start the local development server:
    ```bash
    npm start
    ```
-5. View it in action at `http://localhost:3000`
+5. Access the application in your browser at `http://localhost:3000`
 
 ---
-*Made with ♥ for International Women's Day 2026*
+*Designed and Developed for International Women's Day 2026*
