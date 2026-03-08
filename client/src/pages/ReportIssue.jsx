@@ -1,14 +1,20 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { supabase } from "../services/supabaseClient";
 import { Link } from "react-router-dom";
+
+const supabaseUrl = "https://gjeaivmykdnswowalqlg.supabase.co";
 
 function ReportIssue() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [category, setCategory] = useState("");
+    const [image, setImage] = useState(null);
+    const [imagePreview, setImagePreview] = useState(null);
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
     const [locationStatus, setLocationStatus] = useState("");
+    const [uploadedImageUrl, setUploadedImageUrl] = useState("");
+    const fileInputRef = useRef(null);
 
     const categoryDetails = {
         "Public Safety": {
@@ -26,6 +32,22 @@ function ReportIssue() {
             icon: "🏥",
             examples: "Ignored symptoms, lack of women doctors, inaccessible clinics",
         },
+    };
+
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setImage(file);
+            const reader = new FileReader();
+            reader.onloadend = () => setImagePreview(reader.result);
+            reader.readAsDataURL(file);
+        }
+    };
+
+    const removeImage = () => {
+        setImage(null);
+        setImagePreview(null);
+        if (fileInputRef.current) fileInputRef.current.value = "";
     };
 
     const submitIssue = async (e) => {
@@ -47,6 +69,25 @@ function ReportIssue() {
                 const longitude = position.coords.longitude;
                 setLocationStatus("✅ Location captured!");
 
+                // Upload image to Supabase Storage
+                let imageUrl = "";
+                if (image) {
+                    setLocationStatus("📸 Uploading image...");
+                    const fileName = Date.now() + "_" + image.name;
+                    const { data, error: uploadError } = await supabase.storage
+                        .from("images")
+                        .upload(fileName, image);
+
+                    if (data) {
+                        imageUrl = `${supabaseUrl}/storage/v1/object/public/images/${fileName}`;
+                    }
+                    if (uploadError) {
+                        console.error("Image upload error:", uploadError);
+                    }
+                }
+
+                setUploadedImageUrl(imageUrl);
+
                 const { error } = await supabase.from("issues").insert([
                     {
                         title,
@@ -56,6 +97,7 @@ function ReportIssue() {
                         longitude,
                         authority,
                         votes: 0,
+                        image_url: imageUrl,
                     },
                 ]);
 
@@ -108,7 +150,19 @@ function ReportIssue() {
                                 {categoryDetails[category]?.authority}
                             </span>
                         </div>
+                        {uploadedImageUrl && (
+                            <div className="summary-row">
+                                <span className="summary-label">Photo</span>
+                                <span className="summary-value">📸 Attached</span>
+                            </div>
+                        )}
                     </div>
+
+                    {uploadedImageUrl && (
+                        <div className="success-image-preview">
+                            <img src={uploadedImageUrl} alt="Uploaded" />
+                        </div>
+                    )}
 
                     <div className="success-actions">
                         <button
@@ -119,6 +173,9 @@ function ReportIssue() {
                                 setDescription("");
                                 setCategory("");
                                 setLocationStatus("");
+                                setImage(null);
+                                setImagePreview(null);
+                                setUploadedImageUrl("");
                             }}
                         >
                             Report Another ✦
@@ -197,6 +254,54 @@ function ReportIssue() {
                             rows={4}
                             required
                         />
+                    </div>
+
+                    <div className="form-group">
+                        <label className="form-label">Photo Evidence (Optional)</label>
+                        <div
+                            className={`upload-zone ${imagePreview ? "upload-zone-has-file" : ""}`}
+                            onClick={() => fileInputRef.current?.click()}
+                        >
+                            <input
+                                ref={fileInputRef}
+                                type="file"
+                                accept="image/*"
+                                onChange={handleImageChange}
+                                className="upload-input-hidden"
+                            />
+                            {imagePreview ? (
+                                <div className="upload-preview">
+                                    <img
+                                        src={imagePreview}
+                                        alt="Preview"
+                                        className="upload-preview-img"
+                                    />
+                                    <button
+                                        type="button"
+                                        className="upload-remove-btn"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            removeImage();
+                                        }}
+                                    >
+                                        ✕
+                                    </button>
+                                    <div className="upload-preview-label">
+                                        {image?.name}
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className="upload-placeholder">
+                                    <span className="upload-icon">📷</span>
+                                    <span className="upload-text">
+                                        Click to upload a photo
+                                    </span>
+                                    <span className="upload-hint">
+                                        JPG, PNG up to 5MB
+                                    </span>
+                                </div>
+                            )}
+                        </div>
                     </div>
 
                     <div className="form-group">
